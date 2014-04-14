@@ -5,7 +5,9 @@ html {
 body {
 background-color: white;
 }
-
+#header {
+ width: 100%;
+}
 #content {
   max-width: 40em;
   height: 100%;
