@@ -1,3 +1,8 @@
 body {
-background-color: blue;
+background-color: white;
+}
+
+#content {
+  max-width: 40em;
+  border: 1px solid silver;
 }
