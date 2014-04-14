@@ -8,6 +8,7 @@ background-color: white;
 
 #content {
   max-width: 40em;
-  border: 1px solid silver;
+  height: 100%;
+  border-bottom: 1px solid silver;
   margin: auto;
 }
