@@ -9,6 +9,7 @@ padding: 0;
 }
 #header {
  width: 100%;
+ background-color: white;
  border-bottom: 1px solid silver;
 }
 #content {
