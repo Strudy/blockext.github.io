@@ -36,15 +36,10 @@ padding: 0;
     text-align: center;
     margin: auto;
     margin-top: 10px;
-    box-shadow:   1px 0px #5DADE2, 0px 1px #48A2DF,
-               2px 1px #5DADE2, 1px 2px #48A2DF,
-               3px 2px #5DADE2, 2px 3px #48A2DF,
-               4px 3px #5DADE2, 3px 4px #48A2DF,
-               5px 4px #5DADE2, 4px 5px #48A2DF,
-               6px 5px #5DADE2, 5px 6px #48A2DF,
-               7px 6px #5DADE2, 6px 7px #48A2DF,
-               8px 7px #5DADE2, 7px 8px #48A2DF,
-               8px 8px #5DADE2;
+    box-shadow: 1px 0px #3a587f, 0px 1px #4171ae,
+              2px 1px #3a587f, 1px 2px #4171ae,
+              3px 2px #3a587f, 2px 3px #4171ae,
+              4px 3px #3a587f, 3px 4px #4171ae;
 
 }
 
