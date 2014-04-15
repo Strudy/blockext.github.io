@@ -26,8 +26,8 @@ padding: 0;
 }
 #header {
  width: 100%;
- background-color: white;
- border-bottom: 1px solid silver;
+ height: 1.5em;
+ background-color: #5C97BF;
 }
 #content {
   max-width: 40em;
