@@ -26,9 +26,16 @@ padding: 0;
 }
 
 #download {
-    width: 2em;
-    height: 1em;
+    width: 8em;
+    height: 4em;
+    background-color: #3498DB;
 
+}
+
+#download p {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
 }
 #header {
  padding: 10px;
