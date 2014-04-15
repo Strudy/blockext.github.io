@@ -3,7 +3,7 @@ html {
 }
 
 body {
-background-color: white;
+background-color: #ecf0f1;
 margin: 0;
 padding: 0;
 }
@@ -17,6 +17,7 @@ padding: 0;
   border-left: 1px solid silver;
   border-right: 1px solid silver;
   margin: auto;
+  background-color: white;
 }
 
 #text {
