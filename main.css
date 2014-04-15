@@ -2,6 +2,15 @@ html {
  font-family: "Open Sans";
 }
 
+a:link {
+    text-decoration: none;
+    color: #2980b9;
+}
+
+a:hover {
+    color: #3498db;
+}
+
 body {
 background-color: #ecf0f1;
 margin: 0;
