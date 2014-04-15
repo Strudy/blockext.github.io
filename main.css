@@ -24,6 +24,12 @@ background-color: #ecf0f1;
 margin: 0;
 padding: 0;
 }
+
+#download {
+    width: 2em;
+    height: 1em;
+
+}
 #header {
  padding: 10px;
  color: white;
