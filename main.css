@@ -29,6 +29,7 @@ padding: 0;
  height: 2em;
  color: white;
  font-size: 22;
+ text-align: left;
  background-color: #5C97BF;
 }
 #content {
