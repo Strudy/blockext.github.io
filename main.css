@@ -12,6 +12,10 @@ a:hover {
 }
 
 a:visited {
+    color: #8e44ad;
+}
+
+a:visited:hover {
     color: #9b59b6;
 }
 
