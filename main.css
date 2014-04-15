@@ -11,6 +11,10 @@ a:hover {
     color: #3498db;
 }
 
+a:visited {
+    color: #9b59b6;
+}
+
 body {
 background-color: #ecf0f1;
 margin: 0;
