@@ -36,10 +36,10 @@ padding: 0;
     text-align: center;
     margin: auto;
     margin-top: 10px;
-    box-shadow: 1px 0px #3a587f, 0px 1px #4171ae,
-              2px 1px #3a587f, 1px 2px #4171ae,
-              3px 2px #3a587f, 2px 3px #4171ae,
-              4px 3px #3a587f, 3px 4px #4171ae;
+    box-shadow: 1px 0px #2A7AAF, 0px 1px #2F89C5,
+              2px 1px #2A7AAF, 1px 2px #2F89C5,
+              3px 2px #2A7AAF, 2px 3px #2F89C5,
+              4px 3px #2A7AAF, 3px 4px #2F89C5;
 
 }
 
@@ -50,8 +50,8 @@ padding: 0;
 
 #download:active {
     transform: translate(4px, 4px);
-    box-shadow: 1px 0px #3a587f, 0px 1px #4171ae,
-              2px 1px #3a587f, 1px 2px #4171ae;
+    box-shadow: 1px 0px #2A7AAF, 0px 1px #2F89C5,
+              2px 1px #2A7AAF, 1px 2px #2F89C5;
 }
 #header {
  padding: 10px;
