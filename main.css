@@ -63,9 +63,7 @@ padding: 0;
 }
 
 #download:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 0px #2A7AAF, 0px 1px #2F89C5,
-              2px 1px #2A7AAF, 1px 2px #2F89C5;
+    transform: translate(2px, 0px);
 }
 
 #content {
