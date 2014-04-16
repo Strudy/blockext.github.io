@@ -52,10 +52,8 @@ padding: 0;
     text-align: center;
     margin: auto;
     margin-top: 10px;
-    box-shadow: 1px 0px #2A7AAF, 0px 1px #2F89C5,
-              2px 1px #2A7AAF, 1px 2px #2F89C5,
-              3px 2px #2A7AAF, 2px 3px #2F89C5,
-              4px 3px #2A7AAF, 3px 4px #2F89C5;
+    box-shadow: 1px 1px 0 0 #ccc;
+    border-radius: 5px;
 
 }
 
