@@ -1,0 +1,7 @@
+Extension Tutorial
+==================
+
+This tutorial shows you how to write extensions that are compatible with both
+Scratch 2.0 and Snap!.
+
+

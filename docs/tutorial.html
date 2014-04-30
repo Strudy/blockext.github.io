@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial &mdash; Blockext 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Blockext 0.1 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to Blockext’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Blockext’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Blockext 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial shows you how to write extensions that are compatible with both
+<a class="reference external" href="http://scratch.mit.edu/">Scratch 2.0</a> and <a class="reference external" href="http://snap.berkeley.edu/">Snap!</a>.</p>
+<p>It assumes familiarity with at least one of these programming languages.
+Don&#8217;t worry if you&#8217;ve only used one &#8211; we&#8217;ll explain the differences you need
+to know about.</p>
+<p>It also assumes familiarity with Python, and that you&#8217;ve already installed
+blockext. See <a href="#id2"><span class="problematic" id="id3">install_</span></a> if not.</p>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Blockext is a Python module that makes writing extensions for these block-based
+programming languages much, much easier. It probably couldn&#8217;t get any easier.
+Here&#8217;s a quick example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">blockext</span>
+<span class="kn">from</span> <span class="nn">blockext</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">light</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="nd">@command</span><span class="p">(</span><span class="s">&quot;press light switch %n times&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">toggle_light</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">light</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">times</span><span class="p">):</span>
+        <span class="n">light</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">light</span>
+
+<span class="nd">@predicate</span><span class="p">(</span><span class="s">&quot;light is on?&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">is_light_on</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">light</span>
+
+<span class="n">menu</span><span class="p">(</span><span class="s">&quot;city&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;Barcelona&quot;</span><span class="p">,</span> <span class="s">&quot;Boston&quot;</span><span class="p">,</span> <span class="s">&quot;Brighton&quot;</span><span class="p">])</span>
+
+<span class="nd">@reporter</span><span class="p">(</span><span class="s">&quot;weather forecast for %m.city&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">forecast</span><span class="p">(</span><span class="n">city</span><span class="o">=</span><span class="s">&quot;Boston&quot;</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">random</span>
+    <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&quot;windy&quot;</span><span class="p">,</span> <span class="s">&quot;snowy&quot;</span><span class="p">,</span> <span class="s">&quot;sunny&quot;</span><span class="p">])</span>
+
+<span class="n">blockext</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s">&quot;Tutorial Example&quot;</span><span class="p">,</span> <span class="s">&quot;example&quot;</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Let&#8217;s see it in action! Save and run the example, and then point your web
+browser to <a class="reference external" href="http://localhost:5000/">http://localhost:5000/</a>. You&#8217;ll then see a web page with the
+following options, above a list of the blocks you just defined:</p>
+<ul class="simple">
+<li>Download Scratch 2.0 extension</li>
+<li>Download Snap! blocks</li>
+</ul>
+<p>Click each of them to save the blocks to your downloads folder.</p>
+</div>
+<div class="section" id="scratch">
+<h2>Scratch<a class="headerlink" href="#scratch" title="Permalink to this headline">¶</a></h2>
+<p>Now, load up the <a class="reference external" href="http://scratch.mit.edu/scratch2download/">Scratch 2.0 offline editor</a>. Shift-click the &#8220;File&#8221; menu,
+and select &#8220;Import Experimental Extension&#8221;. Select the <tt class="docutils literal"><span class="pre">scratch_example.s2e</span></tt>
+file to load the extension blocks into Scratch.</p>
+<p>You can then select the purple &#8220;More Blocks&#8221; tab to see your blocks loaded into
+Scratch!</p>
+<p>Try &#8220;say&#8221;-ing the &#8220;light is on?&#8221; and &#8220;weather forecast&#8221; blocks, and try using
+the &#8220;press switch&#8221; block to change the value of the light reporter.</p>
+</div>
+<div class="section" id="snap">
+<h2>Snap!<a class="headerlink" href="#snap" title="Permalink to this headline">¶</a></h2>
+<p>Open <a class="reference external" href="http://snap.berkeley.edu/run">http://snap.berkeley.edu/run</a> in your browser, and use &#8220;Import&#8221; from the
+&#8220;File&#8221; menu to load the <tt class="docutils literal"><span class="pre">snap_example.xml</span></tt> file you just downloaded.</p>
+</div>
+<div class="section" id="step-by-step">
+<h2>Step-by-step<a class="headerlink" href="#step-by-step" title="Permalink to this headline">¶</a></h2>
+<p>Now you&#8217;ve seen the example extension in action, let&#8217;s break down the code.
+Here&#8217;s the first line:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">blockext</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>This is just importing the entire contents of the <tt class="docutils literal"><span class="pre">blockext</span></tt> module. If
+you&#8217;ve done any Python, you should be familiar with this. Next:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">light</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="nd">@command</span><span class="p">(</span><span class="s">&quot;press light switch %n times&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">toggle_light</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">light</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">times</span><span class="p">):</span>
+        <span class="n">light</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">light</span>
+</pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">&#64;command</span></tt> line is called a decorator. You don&#8217;t need to know how it
+works, just that a line starting with an <tt class="docutils literal"><span class="pre">&#64;</span></tt> symbol always goes before a
+function, and does something special to the function.</p>
+<p>In this case, the <tt class="docutils literal"><span class="pre">command</span></tt> decorator is turning the function into a block
+definition for a command block. (Command blocks are the ones with the hole on
+the top and the puzzle-piece stub on the bottom.)</p>
+<p>Let&#8217;s have a look at the rest of the blocks:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@predicate</span><span class="p">(</span><span class="s">&quot;light is on?&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">is_light_on</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">light</span>
+
+<span class="nd">@reporter</span><span class="p">(</span><span class="s">&quot;weather forecast for %m.city&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">forecast</span><span class="p">(</span><span class="n">city</span><span class="o">=</span><span class="s">&quot;Boston&quot;</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">random</span>
+    <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s">&quot;windy&quot;</span><span class="p">,</span> <span class="s">&quot;snowy&quot;</span><span class="p">,</span> <span class="s">&quot;sunny&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>I skipped over this line:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">menu</span><span class="p">(</span><span class="s">&quot;city&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s">&quot;Barcelona&quot;</span><span class="p">,</span> <span class="s">&quot;Boston&quot;</span><span class="p">,</span> <span class="s">&quot;Brighton&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>This defines the options for the menu</p>
+<p>Now, the final line:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">blockext</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s">&quot;Tutorial Example&quot;</span><span class="p">,</span> <span class="s">&quot;example&quot;</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tutorial</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#scratch">Scratch</a></li>
+<li><a class="reference internal" href="#snap">Snap!</a></li>
+<li><a class="reference internal" href="#step-by-step">Step-by-step</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Blockext&#8217;s documentation!</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tutorial.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Blockext’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">Blockext 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Connor Hudson, Tim Radvan.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.
+    </div>
+  </body>
+</html>
